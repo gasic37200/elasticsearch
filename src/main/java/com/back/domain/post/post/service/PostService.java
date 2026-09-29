@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +28,17 @@ public class PostService {
 
     public Post findById(String id) {
         return postRepository.findById(id).orElseThrow(()->new NotFoundException("Post not found with id: " + id));
+    }
+
+    public Post update(String id, String title, String content) {
+        Post post = findById(id);
+        if (title != null){
+            post.setTitle(title);
+        }
+        if (content != null){
+            post.setContent(content);
+        }
+        post.setLastModifiedAt(java.time.OffsetDateTime.now());
+        return postRepository.save(post);
     }
 }

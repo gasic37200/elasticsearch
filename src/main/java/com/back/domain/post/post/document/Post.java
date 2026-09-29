@@ -1,5 +1,6 @@
 package com.back.domain.post.post.document;
 
+import lombok.Data;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.DateFormat;
@@ -10,7 +11,8 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.time.OffsetDateTime;
 
 @Document(indexName = "posts")
-@Getter
+// @Getter, @Setterm, @ToString 등 자주 쓰이는 Lombok 어노테이션 모음집
+@Data
 public class Post {
     @Id
     private String id;
