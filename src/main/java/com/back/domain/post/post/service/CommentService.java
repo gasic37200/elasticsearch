@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 public class CommentService {
     private final CommentRepository commentRepository;
 
+    public Comment create(Post post, String content, String author) {
+        Comment comment = new Comment(post.getId(),content, author);
+        return commentRepository.save(comment);
+    }
+
     public long count() {
         return commentRepository.count();
     }
