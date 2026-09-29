@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Testcontainers
 @AutoConfigureMockMvc
-public class PostControllerTests extends BaseTest {
+public class ApiV1PostControllerTests extends BaseTest {
     @Autowired
     private MockMvc mockMvc;
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -31,7 +31,7 @@ public class PostControllerTests extends BaseTest {
                         .contentType("application/json")
                         .content(
                                 objectMapper.writeValueAsBytes(
-                                        new PostController.CreatePostRequest(
+                                        new ApiV1PostController.CreatePostRequest(
                                                 null,
                                                 "Test Content",
                                                 "Test Author"
@@ -49,7 +49,7 @@ public class PostControllerTests extends BaseTest {
                                 .contentType("application/json")
                                 .content(
                                         objectMapper.writeValueAsBytes(
-                                                new PostController.CreatePostRequest(
+                                                new ApiV1PostController.CreatePostRequest(
                                                         "Test Title",
                                                         "Test Content",
                                                         "Test Author"
