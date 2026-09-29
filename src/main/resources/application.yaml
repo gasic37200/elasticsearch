@@ -4,9 +4,19 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
-logging:
-  level:
-    com:
-      back: debug
-server:
-  port: 8090
+  profiles:
+    active: dev
+  # 패키지의 로그 레벨을 debug로 설정
+  logging:
+    level:
+      com:
+        back: debug
+  server:
+    port: 8090
+  # 빈 객체 직렬화 예외 방지
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  # Elasticsearch 주소 설정
+  elasticsearch:
+    uris: localhost:9200
