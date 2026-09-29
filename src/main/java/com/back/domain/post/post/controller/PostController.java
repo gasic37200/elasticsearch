@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/posts")
 @RequiredArgsConstructor
@@ -36,5 +38,10 @@ public class PostController {
                 request.author
         );
         return ResponseEntity.status(201).body(post);
+    }
+
+    @RequestMapping
+    public List<Post> findAll(){
+        return postService.findAll();
     }
 }
